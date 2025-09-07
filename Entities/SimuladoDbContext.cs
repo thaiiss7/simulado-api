@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace simulado.Entities;
+namespace Simulado.Entities;
 
 public class SimuladoDbContext(DbContextOptions options) : DbContext(options)
 {

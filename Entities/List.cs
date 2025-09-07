@@ -1,4 +1,4 @@
-namespace simulado.Entities;
+namespace Simulado.Entities;
 
 public class List
 {
