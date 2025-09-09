@@ -4,6 +4,7 @@ namespace Simulado.Validations;
 
 public class TextAttributes : ValidationAttribute
 {
+    //valores default
     public int MaxLines { get; set; } = 100;
     public int MaxWords { get; set; } = 1000;
     public int MaxChar { get; set; } = 600;
