@@ -46,6 +46,6 @@ public static class ListEndpoints
                     (true, _) => Results.Ok(result.Data)
                 };
 
-            });
+            }).RequireAuthorization();
     }
 }
