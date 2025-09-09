@@ -1,0 +1,7 @@
+In Memory:
+
+- dotnet add package Microsoft.EntityFrameworkCore.InMemory
+
+- program:
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseInMemoryDatabase("MinhaBaseInMemory"));

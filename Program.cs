@@ -15,8 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<SimuladoDbContext>(options =>
 {
-    var sqlConn = Environment.GetEnvironmentVariable("SQL_CONNECTION");
-    options.UseSqlServer(sqlConn);
+    var myBd = Environment.GetEnvironmentVariable("SQL_CONNECTION") ?? "SimuladoDB";
+    options.UseInMemoryDatabase(myBd);
 });
 
 builder.Services.AddSingleton<IJWTService, JWTService>();
@@ -46,10 +46,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseAuthentication();
 app.UseAuthorization();
