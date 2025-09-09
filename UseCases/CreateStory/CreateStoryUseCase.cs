@@ -13,7 +13,7 @@ public class CreateStoryUseCase(SimuladoDbContext ctx)
             AuthorId = request.AuthorId
         };
 
-        ctx.Add(story);
+        ctx.Stories.Add(story);
         await ctx.SaveChangesAsync();
         return Result<CreateStoryResponse>.Success(new(story.ID));
     }
