@@ -12,7 +12,7 @@ public class TextAttributes : ValidationAttribute
     protected override ValidationResult IsValid(object value, ValidationContext context)
     {
         if (value is not string text || string.IsNullOrWhiteSpace(text))
-            return ValidationResult.Sucess;
+            return ValidationResult.Success;
 
         if (text.Split('\n').Length > MaxLines)
             return new ValidationResult($"Text must have less than {MaxLines} lines");
@@ -23,6 +23,6 @@ public class TextAttributes : ValidationAttribute
         if (text.Length > MaxChar)
             return new ValidationResult($"Text must have less than {MaxChar} charcaters");
 
-        return ValidationResult.Sucess;
+        return ValidationResult.Success;
     }
 }

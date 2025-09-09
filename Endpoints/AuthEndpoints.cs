@@ -20,7 +20,7 @@ public static class AuthEndpoints
                 ));
 
                 if (response.IsSuccess)
-                    return Results.Ok(response.Value);
+                    return Results.Ok(response.Data);
 
                 return Results.Unauthorized();
             });

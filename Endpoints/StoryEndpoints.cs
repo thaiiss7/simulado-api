@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Simulado.UseCases.CreateStory;
 using Simulado.UseCases.DeleteStory;

@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
 using Simulado.UseCases.EditList;
 using Simulado.UseCases.GetList;
 
@@ -26,22 +28,22 @@ public static class ListEndpoints
 
         //mapput para editar lista
         app.MapPut("/{listId}/{storyId}", async (
-            string listId,
-            string storyId,
+            string listID,
+            string storyID,
             HttpContext http,
-            [FromServices] EditlistUseCase useCase) =>
+            [FromServices] EditListUseCase useCase) =>
             {
                 var claim = http.User.FindFirst(ClaimTypes.NameIdentifier);
                 var userId = Guid.Parse(claim.Value);
-                var storyId = Guid.Parse(storyId);
-                var listId = Guid.Parse(listId);
-                var request = await new EditListRequest(listId, userId, storyId);
+                var storyId = Guid.Parse(storyID);
+                var listId = Guid.Parse(listID);
+                var request = new EditListRequest(listId, userId, storyId);
                 var result = await useCase.Do(request);
 
                 return (result.IsSuccess, result.Reason) switch
                 {
                     (false, "List not found") => Results.NotFound(),
-                    (false, "Unathorized") => Results.Unathorized(),
+                    (false, "Unauthorized") => Results.Unauthorized(),
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };

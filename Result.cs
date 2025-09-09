@@ -2,7 +2,7 @@ namespace Simulado;
 
 public record Result<T>
 (
-    T? Value,
+    T? Data,
     bool IsSuccess,
     string? Reason
 )
